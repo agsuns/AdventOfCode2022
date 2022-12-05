@@ -1,9 +1,9 @@
-const { getInput } = require('../InputGrabber');
+const { getInput } = require('../inputGetter');
 
 const data = getInput();
 const linesArray = data.split(/\r\n|\n|\r/);
 
-const doesOneContainTheOther = (section1, section2) => {
+const doesSectionContain = (section1, section2) => {
   if (section1[0] <= section2[0] && section1[1] >= section2[1]) return true;
   if (section2[0] <= section1[0] && section2[1] >= section1[1]) return true;
   return false;
@@ -22,7 +22,7 @@ const sectionMap = (line) => {
 
 const result = linesArray.reduce((acc, line) => {
   const { section1, section2 } = sectionMap(line);
-  if (doesOneContainTheOther(section1, section2)) return acc + 1;
+  if (doesSectionContain(section1, section2)) return acc + 1;
   return acc;
 }, 0);
 

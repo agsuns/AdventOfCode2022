@@ -1,4 +1,4 @@
-const { getInput } = require('../InputGrabber');
+const { getInput } = require('../inputGetter');
 
 const data = getInput();
 const linesArray = data.split(/\r\n|\n|\r/);

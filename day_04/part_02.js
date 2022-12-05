@@ -1,9 +1,9 @@
-const { getInput } = require('../InputGrabber');
+const { getInput } = require('../inputGetter');
 
 const data = getInput();
 const linesArray = data.split(/\r\n|\n|\r/);
 
-const doTheyOverlap = (section1, section2) => {
+const doSectionsOverlap = (section1, section2) => {
   const { biggestSec, smallestSec } =
     section1[1] >= section2[1]
       ? { biggestSec: section1, smallestSec: section2 }
@@ -27,7 +27,7 @@ const sectionMap = (line) => {
 
 const result = linesArray.reduce((acc, line) => {
   const { section1, section2 } = sectionMap(line);
-  if (doTheyOverlap(section1, section2)) return acc + 1;
+  if (doSectionsOverlap(section1, section2)) return acc + 1;
   return acc;
 }, 0);
 
